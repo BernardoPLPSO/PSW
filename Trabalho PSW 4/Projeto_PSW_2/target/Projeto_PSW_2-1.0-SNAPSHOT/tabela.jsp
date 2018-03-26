@@ -4,7 +4,11 @@
     Author     : Pirlimpimposo
 --%>
 
+<%@page import ="java.util.*"%>
+<%@page import ="javax.servlet.*"%>
+<%@page import ="br.pirlimpimposo.Aluno"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,6 +26,21 @@
             <th>Trabalho</th>
             <th>Frequencia</th>
             <th>ProvaFinal</th>
+            <th>Situação</th>
+            <%
+                List<Aluno> a = (ArrayList<Aluno>) request.getServletContext().getAttribute("Aluno");
+                for(Aluno b:a){
+            %>
+            <tr>
+                <td><%=b.getNome()%></td>
+                <td><%=b.getP1()%></td>
+                <td><%=b.getProjAula()%></td>
+                <td><%=b.getTrabalho()%></td>
+                <td><%=b.getFreq()%></td>
+                <td><%=b.getPF()%></td>
+                <td><%=b.getSituacao()%></td>
+            </tr>
+            <%}%>
         </table>
     </body>
 </html>
