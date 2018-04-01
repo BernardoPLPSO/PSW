@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.politico</groupId>
-    <artifactId>Projeto_PSW_4</artifactId>
+    <artifactId>Projeto_PSW_5</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>Projeto_PSW_4</name>
+    <name>Projeto_PSW_5</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
