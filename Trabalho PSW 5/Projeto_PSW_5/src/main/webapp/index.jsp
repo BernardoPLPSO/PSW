@@ -10,13 +10,13 @@
     </head>
     <body>
         <form action="RequestServlet" method ="POST">
-            Nome: <input type="text" name="nome" value="<%= request.getParameter("nome") != null ? request.getParameter("nome") : "" %>"><%= request.getAttribute("msgErroNome") != null ? request.getAttribute("msgErroNome") : "" %><br>
-            Nota 1:<input type="text" name ="P1" value="<%= request.getParameter("P1") != null ? request.getParameter("P1") : "" %>"><%= request.getAttribute("msgErroNota") != null ? request.getAttribute("msgErroNota") : "" %><br>
-            Projeto: <input type="text" name ="ProjAula" value="<%= request.getParameter("ProjAula") != null ? request.getParameter("ProjAula") : "" %>"><%= request.getAttribute("msgErroNota2") != null ? request.getAttribute("msgErroNota2") : "" %><br>
-            Trabalho: <input type="text" name ="Trabalho" value="<%= request.getParameter("Trabalho") != null ? request.getParameter("Trabalho") : "" %>"><%= request.getAttribute("msgErroNota3") != null ? request.getAttribute("msgErroNota3") : "" %><br>
-            Frequencia: <input type="text" name ="freq" value ="<%= request.getParameter("freq") != null ? request.getParameter("freq") : "" %>"><%= request.getAttribute("msgErroFrequencia") != null ? request.getAttribute("msgErroFrequencia") : "" %><br>
-            Nota PF: <input type="text" name ="PF" value="<%= request.getParameter("PF") != null ? request.getParameter("PF") : "" %>"><%= request.getAttribute("msgErroNota4") != null ? request.getAttribute("msgErroNota4") : "" %><br>
-            <button type="submit">enviar</button>
+            Nome      : <input type="text" name="nome" value="${param.nome}">${msgErroNome}<br>
+            Nota 1    :<input type="text" name ="P1" value="${param.P1}">${msgErroNota}<br>
+            Projeto   : <input type="text" name ="ProjAula" value="${param.ProjAula}">${msgErroNota2}<br>
+            Trabalho  : <input type="text" name ="Trabalho" value="${param.Trabalho}">${msgErroNota3}<br>
+            Frequencia: <input type="text" name ="freq" value ="${param.freq}">${msgErroFrequencia}<br>
+            Nota PF   : <input type="text" name ="PF" value="${param.PF}">${msgErroNota4}<br>
+            <button type="submit">Enviar</button>
             
         </form>
     </body>

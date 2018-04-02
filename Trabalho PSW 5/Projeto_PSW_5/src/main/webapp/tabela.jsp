@@ -4,6 +4,7 @@
     Author     : Pirlimpimposo
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import ="java.util.*"%>
 <%@page import ="javax.servlet.*"%>
 <%@page import ="br.pirlimpimposo.Aluno"%>
@@ -27,20 +28,17 @@
             <th>Frequencia</th>
             <th>ProvaFinal</th>
             <th>Situação</th>
-            <%
-                List<Aluno> a = (ArrayList<Aluno>) request.getServletContext().getAttribute("Aluno");
-                for(Aluno b:a){
-            %>
-            <tr>
-                <td><%=b.getNome()%></td>
-                <td><%=b.getP1()%></td>
-                <td><%=b.getProjAula()%></td>
-                <td><%=b.getTrabalho()%></td>
-                <td><%=b.getFreq()%></td>
-                <td><%=b.getPF()%></td>
-                <td><%=b.getSituacao()%></td>
-            </tr>
-            <%}%>
+            <c:forEach items="${Aluno}" var="a">
+                <tr>
+                    <td>${a.nome}</td>
+                    <td>${a.p1}</td>
+                    <td>${a.projAula}</td>
+                    <td>${a.trabalho}</td>
+                    <td>${a.freq}</td>
+                    <td>${a.PF}</td>
+                    <td>${a.situacao}</td>
+                </tr>
+            </c:forEach>
         </table>
     </body>
 </html>
