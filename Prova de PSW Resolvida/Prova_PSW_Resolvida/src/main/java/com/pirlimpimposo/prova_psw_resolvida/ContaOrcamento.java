@@ -106,7 +106,7 @@ public class ContaOrcamento extends Conta{
      *@param valorRealizado float valorRealizado - valor que será adicionado ao valor realizado
      */
     public void setValorRealizado(float valorRealizado){
-        this.valorRealizado += valorRealizado;
+        this.valorRealizado = valorRealizado;
     }
     
     /**

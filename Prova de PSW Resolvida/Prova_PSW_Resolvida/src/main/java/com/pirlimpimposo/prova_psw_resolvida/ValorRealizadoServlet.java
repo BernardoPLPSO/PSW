@@ -63,7 +63,7 @@ public class ValorRealizadoServlet extends HttpServlet{
                     System.out.println(o.getCodigo());
                     if((o.getValorDisponivel()-realizado)>= 0){
                         o.setValorRealizado(realizado);
-                        msgErro = "";
+                        msgErro = "Valor inserido com êxito";
                         return msgErro;
                     }
                     else{
