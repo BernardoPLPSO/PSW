@@ -37,33 +37,54 @@ public class ValorRealizadoServlet extends HttpServlet{
         }else{
             realizado = 0;
         }
-        Orcamento orcamentoEscolhido;
         ArrayList<ContaOrcamento> contaOrcamento = (ArrayList<ContaOrcamento>)req.getServletContext().getAttribute("contaOrcamento");
-        System.out.println(contaOrcamento.get(0).getNome()+"ABC/n");
         if(!codigo.isEmpty() && !((String)req.getParameter("realizado")).isEmpty() && realizado >= 0){
-            for(ContaOrcamento o : contaOrcamento){
-                if(o.getCodigo().equals(codigo)){
-                    o.setValorRealizado(realizado);
-                    req.getServletContext().setAttribute("msgErro","");
-                }
-                else if(o.getSubcontaOrcamento()!=null){
-                    for(ContaOrcamento f : o.getSubcontaOrcamento()){
-                        if(f.getCodigo().equals(codigo)){
-                            f.setValorRealizado(realizado);
-                            req.getServletContext().setAttribute("msgErro","");
-                        }
-                    }
-                }
-                else{
-                    String msgErro = "O valor realizado deve existir e o codigo deve ser um dos representados na tabela";
-                    req.getServletContext().setAttribute("msgErro",msgErro);
-                }
-            }
+            String msgErro = validaServlet(contaOrcamento, codigo, realizado);
+            req.getServletContext().setAttribute("msgErro",msgErro);
         }
         else{
-            String msgErro = "Ambos valores devem estar preenchidos";
+            String msgErro = "Ambos valores devem estar preenchidos e o valor realizado deve ser positivo";
             req.getServletContext().setAttribute("msgErro",msgErro);
         }
         req.getRequestDispatcher("tabela.jsp").forward(req, resp);
+    }
+    /**Método responsável pela mudança no valor realizado na tabela, com recursividade
+     * 
+     * @param contaOrcamento - lista de contas de orçamento que é passada
+     * @param codigo - codigo inserido no input da tabela
+     * @param realizado - valor realizado a ser adicionado na conta, inserido no input da tabela
+     * @return String - valor da mensagem de erro a ser dada
+     */
+    public String validaServlet(ArrayList<ContaOrcamento> contaOrcamento, String codigo, float realizado){
+        String msgErro = "";
+        for(ContaOrcamento o : contaOrcamento){
+            if(o.getCodigo().equals(codigo)){
+                if(o.getSubcontaOrcamento()==null){
+                    System.out.println(o.getCodigo());
+                    if((o.getValorDisponivel()-realizado)>= 0){
+                        o.setValorRealizado(realizado);
+                        msgErro = "";
+                        return msgErro;
+                    }
+                    else{
+                        msgErro = "O valor entrado tem que estar dentro dos limites do orçamento da conta";
+                        return msgErro;
+                    }
+                }
+                else{
+                    msgErro = "A conta inserida deve ser uma 'folha da arvore', ou seja, para mudar o valor dela, ela não pode possuir subcontas";
+                }
+            }
+            else if(o.getSubcontaOrcamento()!=null){
+                msgErro = validaServlet(o.getSubcontaOrcamento(), codigo, realizado);
+                if(msgErro.equals(""))
+                    return msgErro;
+            }
+            else if(msgErro.equals("")){
+                msgErro = "O codigo deve ser um dos representados na tabela";
+            }
+        }
+        System.out.println(msgErro);
+        return msgErro;
     }
 }

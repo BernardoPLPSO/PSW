@@ -39,6 +39,25 @@ public class ContaOrcamento extends Conta{
      * 
      * @param nome - nome da conta de orçamento
      * @param codigo - codigo da conta de orçamento
+     * @param valorOrcado - valor orçado da conta de orçamento
+     * @param valorRealizado - valor realizado da conta de orçamento
+     * @param valorComprometido - valor comprometido da conta de orçamento
+     * @param subcontaOrcamento - lista de subcontas de orçamento
+     */
+    public ContaOrcamento(String nome, String codigo, float valorOrcado, float valorRealizado, float valorComprometido, ArrayList<ContaOrcamento> subcontaOrcamento) {
+        super(nome,codigo);
+        this.valorOrcado = valorOrcado;
+        this.valorRealizado = valorRealizado;
+        this.valorComprometido = valorComprometido;
+        this.subcontaOrcamento = subcontaOrcamento;
+    }
+    
+    
+    /**
+     * Método para criação de uma instancia do objeto ContaOrcamento
+     * 
+     * @param nome - nome da conta de orçamento
+     * @param codigo - codigo da conta de orçamento
      * @param subcontaOrcamento - lista de subcontas de orçamento
      */
     public ContaOrcamento(String nome, String codigo, ArrayList<ContaOrcamento> subcontaOrcamento) {
