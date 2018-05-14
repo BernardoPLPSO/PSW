@@ -34,9 +34,14 @@ public class ImprimirTabelaTag extends SimpleTagSupport{
      */
     public String imprimir(ContaOrcamento o){
         String resultado;
-        
+        String espacos = "";
+        for(int i = 0; i < o.getCodigo().length(); i++){
+            if((o.getCodigo()).charAt(i) == '.'){
+                espacos = espacos.concat("&nbsp&nbsp");
+            }
+        }
             resultado = "<tr>"+
-                        "<td>"+o.getCodigo()+" "+o.getNome()+"</td>"+
+                        "<td>"+espacos+"<b>"+o.getCodigo()+".</b>"+o.getNome()+"</td>"+
                         "<td>"+o.getValorOrcado()+"</td>"+
                         "<td>"+o.getValorRealizado()+"</td>"+
                         "<td>"+o.getValorComprometido()+"</td>"+

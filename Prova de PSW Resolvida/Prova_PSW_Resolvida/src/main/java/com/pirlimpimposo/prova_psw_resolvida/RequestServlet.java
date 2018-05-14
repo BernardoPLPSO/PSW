@@ -72,12 +72,14 @@ public class RequestServlet extends HttpServlet {
         ArrayList<ContaOrcamento> subcontasB = new ArrayList<ContaOrcamento>();
         subcontasB.add(subContaOrcamentoB1);
         subcontasB.add(subContaOrcamentoB2);
+        ContaOrcamento contaOrcamentoC = new ContaOrcamento("Imprevistos","3", 2500, 450, 600);
         
         ContaOrcamento contaOrcamentoB = new ContaOrcamento("Folha Pagamento","2",subcontasB);
         
         ArrayList<ContaOrcamento> contasOrcamentoA = new ArrayList<ContaOrcamento>();
         contasOrcamentoA.add(contaOrcamentoA);
         contasOrcamentoA.add(contaOrcamentoB);
+        contasOrcamentoA.add(contaOrcamentoC);
         
         Orcamento orcamentoA = new Orcamento("Orcamento 2018", 2018,contasOrcamentoA);
         ArrayList<Orcamento> orcamentosA = new ArrayList<Orcamento>();
@@ -86,6 +88,7 @@ public class RequestServlet extends HttpServlet {
         Orcamento orcamentoB = new Orcamento("Orcamento 2016", 2016, contasOrcamentoA);
         orcamentosA.add(orcamentoB);
         
+                
         Empresa empresaA = new Empresa("Empresa A",orcamentosA);
         ArrayList<Empresa> empresas = new ArrayList<Empresa>();
         empresas.add(empresaA);
