@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<title>Hello World</title>
+        <style>
+        table {
+        	border-collapse: collapse;
+		}
+		table, td, th {
+    		border: 1px solid black;
+            padding: 0px;
+            font-family:verdana;
+            font-size:14px;
+		}
+        </style>
+        <script type=”text/javascript”> </script>
+	</head>
+	
+	<body>
+		<form action="" method="post" class="ajax">
+			<div>Nome do Aluno <input type="text" name="nome"></div>
+			<div>Nota 1 <input type="text" name="p1"></div>
+			<div>Nota 2 <input type="text" name="p2"></div>
+			<div>Nota PF <input type="text" name="pf"></div>
+			<div>Nota Final <input type="text" name="notafim"></div>
+			<div>Situação <input type="text" name="sit"></div>
+			<input type="submit" value="Cadastrar">
+		</form>
+		<script>
+			function reprovado(){
+				document.getElementById("demo").innerHTML = "Reprovado"
+			}
+		</script>
+		<table>
+		<th>Aluno</th>
+		<th>Nota1</th>
+		<th>Nota2</th>
+		<th>Nota Final</th>
+		<th>Prova Final</th>
+		<th>Situação</th>
+		<tr>
+			<td>João</td>
+			<td>10</td>
+			<td>9</td>
+			<td>9,5</td>
+			<td>10</td>
+			<td id = "demo">Aprovado</td>
+		</tr>
+		<tr>
+			<td>Maria</td>
+			<td>8</td>
+			<td>9</td>
+			<td>8,5</td>
+			<td>10</td>
+			<td id = "demo">Aprovado</td>
+		</tr>
+		<tr>
+			<td>José</td>
+			<td>7</td>
+			<td>6</td>
+			<td>6,5</td>
+			<td>10</td>
+			<td id = "demo">Aprovado</td>
+		</tr>
+		</table>
+		<button type="button" onclick= reprovado() >Click Me!</button>
+	</body>
+
+
+</html>
